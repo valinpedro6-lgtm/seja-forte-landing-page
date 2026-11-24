@@ -49,6 +49,7 @@
   --popover-foreground: oklch(0.97 0.01 300);
   --primary: oklch(0.62 0.24 300);
   --primary-glow: oklch(0.7 0.21 325);
+  --primary-shine: oklch(0.86 0.12 320);
   --primary-foreground: oklch(0.98 0.005 80);
   --secondary: oklch(0.22 0.035 295);
   --secondary-foreground: oklch(0.97 0.01 300);
@@ -118,6 +119,46 @@
   }
 }
 
+/* Luz de palco roxa vindo do topo */
+@utility bg-spotlight {
+  background-image: radial-gradient(ellipse 90% 60% at 50% 0%, color-mix(in oklab, var(--primary-glow) 24%, transparent), transparent 70%);
+}
+
+/* Texto com brilho metálico animado */
+@utility text-shine {
+  background-image: linear-gradient(110deg, var(--primary) 25%, var(--primary-shine) 45%, var(--primary) 65%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4.5s linear infinite;
+}
+
+/* Borda interna luminosa + brilho externo (cards premium) */
+@utility border-glow {
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--foreground) 14%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, var(--primary) 25%, transparent),
+    var(--shadow-glow);
+}
+
+/* Faixa de luz que atravessa o botão no hover */
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 35%, oklch(1 0 0 / 30%) 50%, transparent 65%);
+    transform: translateX(-130%);
+  }
+  &:hover::after {
+    transform: translateX(130%);
+    transition: transform 0.8s ease;
+  }
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -133,6 +174,21 @@
   100% { box-shadow: 0 0 0 18px transparent; }
 }
 
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+
+@keyframes shine {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 @utility animate-marquee {
   animation: marquee 22s linear infinite;
 }
@@ -143,4 +199,40 @@
 
 @utility animate-pulse-ring {
   animation: pulse-ring 1.8s ease-out infinite;
+}
+
+@utility animate-kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+
+@utility animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+/* Revelação suave ao rolar (usada pelo componente Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-kenburns,
+  .animate-marquee,
+  .animate-float-slow,
+  .text-shine {
+    animation: none;
+  }
 }

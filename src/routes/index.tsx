@@ -13,6 +13,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { OFFER } from "@/lib/offer";
+import { Reveal } from "@/components/reveal";
 
 const TITLE = "SEJA FORTE — treinos, dieta e comunidade do @ogabmts";
 const DESCRIPTION =
@@ -99,8 +100,9 @@ function Index() {
         <img
           src={foto1.url}
           alt="@ogabmts na academia mostrando o braço"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_20%]"
+          className="animate-kenburns absolute inset-0 h-full w-full object-cover object-[50%_20%]"
         />
+        <div className="bg-spotlight absolute inset-0" />
         <div className="bg-fade absolute inset-0" />
 
         <header className="relative z-10 flex items-center justify-between px-5 pt-5 md:px-10">
@@ -122,7 +124,7 @@ function Index() {
           <h1 className="animate-rise font-display text-[26vw] md:text-[11rem]" style={{ animationDelay: "0.1s" }}>
             Seja
             <br />
-            <span className="text-primary">Forte</span>
+            <span className="text-shine">Forte</span>
           </h1>
           <p
             className="animate-rise mt-5 max-w-md text-lg text-foreground/85"
@@ -152,7 +154,7 @@ function Index() {
 
       {/* Manifesto */}
       <section className="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-10 md:py-28">
-        <div>
+        <Reveal>
           <h2 className="font-display text-5xl md:text-7xl">
             Chega de treinar <span className="text-outline">no escuro</span>
           </h2>
@@ -164,32 +166,32 @@ function Index() {
             No <strong className="text-primary">SEJA FORTE</strong> eu abro tudo o que faço: o
             treino, a alimentação e a execução de cada exercício. Sem segredo.
           </p>
-        </div>
-        <div className="relative">
+        </Reveal>
+        <Reveal className="relative" delay={150}>
           <img
             src={foto2.url}
             alt="@ogabmts de perfil mostrando o ombro e o braço"
             loading="lazy"
             className="-mx-5 aspect-[4/5] w-[calc(100%+2.5rem)] max-w-none object-cover md:mx-0 md:w-full md:rounded-lg"
           />
-          <div className="absolute -bottom-5 -left-3 rounded-md bg-primary px-4 py-2 font-display text-2xl text-primary-foreground shadow-glow md:-left-6">
+          <div className="animate-float-slow absolute -bottom-5 -left-3 rounded-md bg-primary px-4 py-2 font-display text-2xl text-primary-foreground shadow-glow md:-left-6">
             Sem segredo
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* O que você recebe */}
       <section className="bg-card py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-5 md:px-10">
-          <p className="text-sm font-semibold tracking-widest text-primary uppercase">
-            O que você recebe
+          <p className="flex items-center gap-3 text-sm font-semibold tracking-widest text-primary uppercase">
+            <span className="h-px w-8 bg-primary" /> O que você recebe
           </p>
           <h2 className="font-display mt-3 text-5xl md:text-7xl">Tudo que eu uso</h2>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-lg border bg-border md:grid-cols-2">
+          <Reveal className="mt-12 grid gap-px overflow-hidden rounded-lg border bg-border md:grid-cols-2">
             {BENEFITS.map((b, i) => (
-              <div key={b.title} className="group bg-card p-7 transition-colors hover:bg-muted md:p-9">
+              <div key={b.title} className="group bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-muted md:p-9">
                 <div className="flex items-start justify-between">
-                  <b.icon className="size-9 text-primary" strokeWidth={1.75} />
+                  <b.icon className="size-9 text-primary transition-transform duration-300 group-hover:scale-110" strokeWidth={1.75} />
                   <span className="font-display text-4xl text-foreground/15 transition-colors group-hover:text-primary/40">
                     0{i + 1}
                   </span>
@@ -198,17 +200,19 @@ function Index() {
                 <p className="mt-3 text-muted-foreground">{b.text}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Fotos */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-5 md:px-10">
-          <p className="text-sm font-semibold tracking-widest text-primary uppercase">Resultado de verdade</p>
+          <p className="flex items-center gap-3 text-sm font-semibold tracking-widest text-primary uppercase">
+            <span className="h-px w-8 bg-primary" /> Resultado de verdade
+          </p>
           <h2 className="font-display mt-3 text-5xl md:text-7xl">Feito no treino</h2>
         </div>
-        <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-auto md:grid md:max-w-6xl md:grid-cols-4 md:px-10">
+        <Reveal className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-auto md:grid md:max-w-6xl md:grid-cols-4 md:px-10">
           {[
             { src: foto1.url, label: "Braço", pos: "object-[50%_30%]" },
             { src: foto4.url, label: "Pernas", pos: "object-center" },
@@ -224,7 +228,7 @@ function Index() {
               </figcaption>
             </figure>
           ))}
-        </div>
+        </Reveal>
         <p className="mt-3 px-5 text-xs text-muted-foreground md:hidden">Arraste para o lado →</p>
       </section>
 
