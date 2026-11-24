@@ -1,16 +1,16 @@
-# Seja Forte Landing Page
+# Landing Page Teste
 
-Landing page do produto **SEJA FORTE**, com as quatro imagens da campanha e checkout da Lastlink.
+Modelo de landing page neutro para você personalizar e vender sua própria oferta.
 
-- Produto: SEJA FORTE
-- Preço: R$ 27,90
-- Checkout: https://lastlink.com/p/C75F862B3/checkout-payment
+- Identidade de exemplo: @000000
+- Sem preço definido
+- Sem imagens ou dados de terceiros
 
 ## Desenvolvimento
 
 ```sh
 git clone <url-do-repositorio>
-cd seja-forte-landing-page
+cd landing-page-teste
 npm install
 npm run dev
 ```

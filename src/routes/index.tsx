@@ -1,23 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Check, Dumbbell, Lock, MessagesSquare, PlayCircle, Salad, Zap } from "lucide-react";
-
-import foto1 from "@/assets/seja-forte-1.jpg.asset.json";
-import foto2 from "@/assets/seja-forte-2.jpg.asset.json";
-import foto3 from "@/assets/seja-forte-3.jpg.asset.json";
-import foto4 from "@/assets/seja-forte-4.jpg.asset.json";
+import { ArrowRight, Dumbbell, Lock, MessagesSquare, PlayCircle, Salad, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { OFFER } from "@/lib/offer";
 import { Reveal } from "@/components/reveal";
 
-const TITLE = "SEJA FORTE — treinos, dieta e comunidade do @ogabmts";
-const DESCRIPTION =
-  "Treinos completos, dieta, vídeos de execução e grupo exclusivo com o @ogabmts. Acesso por R$ 27,90, pagamento único.";
+const TITLE = "Landing Page Teste — transforme interesse em ação";
+const DESCRIPTION = "Uma landing page pronta para apresentar seu produto, serviço ou comunidade com clareza e impacto.";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -27,64 +16,34 @@ export const Route = createFileRoute("/")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "product" },
+      { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:card", content: "summary" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
 });
 
 const BENEFITS = [
-  {
-    icon: Dumbbell,
-    title: "Treinos completos",
-    text: "A divisão, os exercícios, as séries e as repetições que eu uso. É abrir e executar.",
-  },
-  {
-    icon: Salad,
-    title: "Dieta e alimentação",
-    text: "Como eu como para crescer e secar, sem complicação e sem dieta de fome.",
-  },
-  {
-    icon: PlayCircle,
-    title: "Vídeos de execução",
-    text: "Cada movimento mostrado em detalhe, para você treinar certo e sentir o músculo trabalhar.",
-  },
-  {
-    icon: MessagesSquare,
-    title: "Grupo comigo",
-    text: "Um espaço fechado para tirar dúvidas, trocar ideia e manter a constância junto de quem treina sério.",
-  },
+  { icon: Dumbbell, title: "Conteúdo completo", text: "Apresente sua solução de forma simples, direta e fácil de entender." },
+  { icon: Salad, title: "Experiência organizada", text: "Conduza visitantes por uma jornada clara, sem excesso de informação." },
+  { icon: PlayCircle, title: "Demonstração prática", text: "Mostre o valor do que você oferece e ajude o público a tomar uma decisão." },
+  { icon: MessagesSquare, title: "Relacionamento próximo", text: "Crie conexão com sua audiência e incentive o próximo passo." },
 ];
 
 const FAQ = [
-  {
-    q: "Como recebo o acesso?",
-    a: "Assim que o pagamento é aprovado, você recebe o acesso à comunidade pela Lastlink, no e-mail que usou na compra.",
-  },
-  {
-    q: "É mensalidade?",
-    a: "Não. São R$ 27,90 em pagamento único.",
-  },
-  {
-    q: "Serve para iniciante?",
-    a: "Serve. Os vídeos de execução e o grupo existem justamente para você aprender a fazer certo desde o começo.",
-  },
-  {
-    q: "O pagamento é seguro?",
-    a: "Sim. A compra acontece no checkout seguro da Lastlink, uma das maiores plataformas de comunidades do Brasil.",
-  },
+  { q: "Para quem é esta página?", a: "Para quem quer apresentar um produto, serviço, comunidade ou oferta de maneira profissional." },
+  { q: "Posso trocar os textos?", a: "Sim. Todos os textos foram organizados para você adaptar à sua marca e ao seu público." },
+  { q: "Posso adicionar minhas imagens?", a: "Sim. A estrutura está pronta para receber as imagens e os conteúdos da sua oferta." },
+  { q: "Como começo?", a: "Personalize a identidade visual, os textos e o botão de ação para publicar sua própria oferta." },
 ];
 
-const MARQUEE = ["Disciplina", "Constância", "Força", "Treino", "Dieta", "Seja forte"];
+const MARQUEE = ["Clareza", "Conexão", "Resultado", "Estratégia", "Ação", "Sua marca"];
 
-function CheckoutButton({ label = "Quero ser forte" }: { label?: string }) {
+function ActionButton({ label = "Quero começar" }: { label?: string }) {
   return (
     <Button asChild variant="hero" size="xl" className="w-full sm:w-auto">
-      <a href={OFFER.checkoutUrl} target="_blank" rel="noopener noreferrer">
+      <a href={OFFER.checkoutUrl}>
         {label}
         <ArrowRight className="size-5!" />
       </a>
@@ -95,213 +54,112 @@ function CheckoutButton({ label = "Quero ser forte" }: { label?: string }) {
 function Index() {
   return (
     <main className="overflow-x-hidden pb-24 md:pb-0">
-      {/* Abertura */}
-      <section className="grain relative flex min-h-[100svh] flex-col">
-        <img
-          src={foto1.url}
-          alt="@ogabmts na academia mostrando o braço"
-          className="animate-kenburns absolute inset-0 h-full w-full object-cover object-[50%_20%]"
-        />
-        <div className="bg-spotlight absolute inset-0" />
-        <div className="bg-fade absolute inset-0" />
-
+      <section className="grain bg-spotlight relative flex min-h-[100svh] flex-col">
         <header className="relative z-10 flex items-center justify-between px-5 pt-5 md:px-10">
-          <span className="font-display text-xl">Seja Forte</span>
-          <a
-            href={OFFER.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
-          >
-            {OFFER.creator}
-          </a>
+          <span className="font-display text-xl">Landing Page Teste</span>
+          <span className="text-sm font-semibold text-foreground/80">{OFFER.creator}</span>
         </header>
-
         <div className="relative z-10 mt-auto px-5 pb-28 md:px-10 md:pb-16">
           <p className="animate-rise mb-4 inline-flex items-center gap-2 rounded-full border border-primary/50 bg-background/60 px-3 py-1 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
-            <Zap className="size-3.5" /> Comunidade exclusiva
+            <Zap className="size-3.5" /> Uma nova experiência
           </p>
-          <h1 className="animate-rise font-display text-[26vw] md:text-[11rem]" style={{ animationDelay: "0.1s" }}>
-            Seja
+          <h1 className="animate-rise font-display text-[22vw] md:text-[10rem]" style={{ animationDelay: "0.1s" }}>
+            Sua
             <br />
-            <span className="text-shine">Forte</span>
+            <span className="text-shine">Marca</span>
           </h1>
-          <p
-            className="animate-rise mt-5 max-w-md text-lg text-foreground/85"
-            style={{ animationDelay: "0.25s" }}
-          >
-            Todo o meu conteúdo completo e exclusivo num lugar só. Treino, dieta e eu do seu lado.
+          <p className="animate-rise mt-5 max-w-md text-lg text-foreground/85" style={{ animationDelay: "0.25s" }}>
+            Uma presença digital forte para apresentar sua oferta e transformar atenção em ação.
           </p>
           <div className="animate-rise mt-7 flex flex-col gap-3 sm:flex-row sm:items-center" style={{ animationDelay: "0.4s" }}>
-            <CheckoutButton label={`Entrar por R$ ${OFFER.price}`} />
+            <ActionButton />
             <span className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Lock className="size-4" /> Pagamento único · acesso imediato
+              <Lock className="size-4" /> Experiência simples e objetiva
             </span>
           </div>
         </div>
       </section>
 
-      {/* Faixa */}
       <div className="bg-red-gradient overflow-hidden py-3 text-primary-foreground">
         <div className="animate-marquee flex w-max gap-8 whitespace-nowrap">
-          {[...MARQUEE, ...MARQUEE, ...MARQUEE, ...MARQUEE].map((w, i) => (
-            <span key={i} className="font-display flex items-center gap-8 text-2xl">
-              {w} <span className="text-primary-foreground/50">✦</span>
+          {[...MARQUEE, ...MARQUEE, ...MARQUEE, ...MARQUEE].map((word, index) => (
+            <span key={index} className="font-display flex items-center gap-8 text-2xl">
+              {word} <span className="text-primary-foreground/50">✦</span>
             </span>
           ))}
         </div>
       </div>
 
-      {/* Manifesto */}
-      <section className="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-10 md:py-28">
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
         <Reveal>
           <h2 className="font-display text-5xl md:text-7xl">
-            Chega de treinar <span className="text-outline">no escuro</span>
+            Chega de comunicar <span className="text-outline">no escuro</span>
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground">
-            Ficar mudando de treino toda semana, comer sem saber o que está fazendo e não ver o corpo
-            mudar. Eu já passei por isso.
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+            Uma boa oferta merece uma página que explique seu valor, crie confiança e facilite a decisão de quem chegou até você.
           </p>
-          <p className="mt-4 text-lg text-foreground">
-            No <strong className="text-primary">SEJA FORTE</strong> eu abro tudo o que faço: o
-            treino, a alimentação e a execução de cada exercício. Sem segredo.
+          <p className="mt-4 max-w-2xl text-lg text-foreground">
+            Personalize esta estrutura com a sua identidade, a sua mensagem e o próximo passo da sua audiência.
           </p>
-        </Reveal>
-        <Reveal className="relative" delay={150}>
-          <img
-            src={foto2.url}
-            alt="@ogabmts de perfil mostrando o ombro e o braço"
-            loading="lazy"
-            className="-mx-5 aspect-[4/5] w-[calc(100%+2.5rem)] max-w-none object-cover md:mx-0 md:w-full md:rounded-lg"
-          />
-          <div className="animate-float-slow absolute -bottom-5 -left-3 rounded-md bg-primary px-4 py-2 font-display text-2xl text-primary-foreground shadow-glow md:-left-6">
-            Sem segredo
-          </div>
         </Reveal>
       </section>
 
-      {/* O que você recebe */}
       <section className="bg-card py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-5 md:px-10">
           <p className="flex items-center gap-3 text-sm font-semibold tracking-widest text-primary uppercase">
             <span className="h-px w-8 bg-primary" /> O que você recebe
           </p>
-          <h2 className="font-display mt-3 text-5xl md:text-7xl">Tudo que eu uso</h2>
+          <h2 className="font-display mt-3 text-5xl md:text-7xl">Tudo em um só lugar</h2>
           <Reveal className="mt-12 grid gap-px overflow-hidden rounded-lg border bg-border md:grid-cols-2">
-            {BENEFITS.map((b, i) => (
-              <div key={b.title} className="group bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-muted md:p-9">
+            {BENEFITS.map((benefit, index) => (
+              <div key={benefit.title} className="group bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-muted md:p-9">
                 <div className="flex items-start justify-between">
-                  <b.icon className="size-9 text-primary transition-transform duration-300 group-hover:scale-110" strokeWidth={1.75} />
-                  <span className="font-display text-4xl text-foreground/15 transition-colors group-hover:text-primary/40">
-                    0{i + 1}
-                  </span>
+                  <benefit.icon className="size-9 text-primary transition-transform duration-300 group-hover:scale-110" strokeWidth={1.75} />
+                  <span className="font-display text-4xl text-foreground/15 transition-colors group-hover:text-primary/40">0{index + 1}</span>
                 </div>
-                <h3 className="font-display mt-6 text-3xl">{b.title}</h3>
-                <p className="mt-3 text-muted-foreground">{b.text}</p>
+                <h3 className="font-display mt-6 text-3xl">{benefit.title}</h3>
+                <p className="mt-3 text-muted-foreground">{benefit.text}</p>
               </div>
             ))}
           </Reveal>
         </div>
       </section>
 
-      {/* Fotos */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-5 md:px-10">
-          <p className="flex items-center gap-3 text-sm font-semibold tracking-widest text-primary uppercase">
-            <span className="h-px w-8 bg-primary" /> Resultado de verdade
-          </p>
-          <h2 className="font-display mt-3 text-5xl md:text-7xl">Feito no treino</h2>
-        </div>
-        <Reveal className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-auto md:grid md:max-w-6xl md:grid-cols-4 md:px-10">
-          {[
-            { src: foto1.url, label: "Braço", pos: "object-[50%_30%]" },
-            { src: foto4.url, label: "Pernas", pos: "object-center" },
-            { src: foto2.url, label: "Ombro", pos: "object-center" },
-            { src: foto3.url, label: "Disciplina", pos: "object-[50%_60%]" },
-          ].map((f, i) => (
-            <figure key={f.label} className="group relative h-[70svh] w-[78vw] shrink-0 snap-center overflow-hidden rounded-xl md:h-[520px] md:w-auto">
-              <img src={f.src} alt={`@ogabmts — ${f.label}`} loading="lazy" className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${f.pos}`} />
-              <div className="bg-fade absolute inset-0" />
-              <figcaption className="absolute bottom-4 left-4 flex items-baseline gap-3">
-                <span className="font-display text-lg text-primary">0{i + 1}</span>
-                <span className="font-display text-4xl">{f.label}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </Reveal>
-        <p className="mt-3 px-5 text-xs text-muted-foreground md:hidden">Arraste para o lado →</p>
-      </section>
-
-      {/* Preço */}
-      <section id="entrar" className="relative overflow-hidden px-5 py-20 md:px-10 md:py-28">
-        <img src={foto4.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-30" />
+      <section id="contato" className="relative overflow-hidden px-5 py-20 md:px-10 md:py-28">
         <div className="absolute inset-0 bg-background/70" />
         <div className="grain relative mx-auto max-w-xl overflow-hidden rounded-xl border border-primary/40 bg-card p-8 text-center shadow-glow md:p-12">
-          <p className="text-sm font-semibold tracking-widest text-primary uppercase">Acesso completo</p>
-          <h2 className="font-display mt-3 text-6xl md:text-7xl">Seja Forte</h2>
-          <div className="mt-8 flex items-end justify-center gap-2">
-            <span className="mb-3 text-xl font-semibold text-muted-foreground">R$</span>
-            <span className="font-display text-8xl text-foreground md:text-9xl">{OFFER.price}</span>
-          </div>
-          <p className="mt-2 font-semibold text-primary">Pagamento único</p>
-          <ul className="mx-auto mt-8 max-w-xs space-y-3 text-left">
-            {BENEFITS.map((b) => (
-              <li key={b.title} className="flex items-center gap-3">
-                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/15">
-                  <Check className="size-4 text-primary" />
-                </span>
-                {b.title}
-              </li>
-            ))}
-          </ul>
+          <p className="text-sm font-semibold tracking-widest text-primary uppercase">Pronto para começar?</p>
+          <h2 className="font-display mt-3 text-6xl md:text-7xl">Sua oferta</h2>
+          <p className="mx-auto mt-6 max-w-md text-muted-foreground">
+            Troque este conteúdo pela sua proposta e direcione seus visitantes para o próximo passo.
+          </p>
           <div className="relative z-10 mt-10 flex justify-center">
             <div className="animate-pulse-ring w-full rounded-md sm:w-auto">
-              <CheckoutButton label="Quero entrar agora" />
+              <ActionButton label="Quero saber mais" />
             </div>
           </div>
           <p className="mt-5 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <Lock className="size-3.5" /> Checkout seguro pela Lastlink
+            <Lock className="size-3.5" /> Comunicação clara e profissional
           </p>
         </div>
       </section>
 
-      {/* Dúvidas */}
       <section className="mx-auto max-w-2xl px-5 pb-24 md:px-10">
         <h2 className="font-display text-5xl">Dúvidas</h2>
         <Accordion type="single" collapsible className="mt-6">
-          {FAQ.map((f) => (
-            <AccordionItem key={f.q} value={f.q}>
-              <AccordionTrigger className="text-base font-semibold hover:no-underline">{f.q}</AccordionTrigger>
-              <AccordionContent className="text-base text-muted-foreground">{f.a}</AccordionContent>
+          {FAQ.map((item) => (
+            <AccordionItem key={item.q} value={item.q}>
+              <AccordionTrigger className="text-base font-semibold hover:no-underline">{item.q}</AccordionTrigger>
+              <AccordionContent className="text-base text-muted-foreground">{item.a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </section>
 
       <footer className="border-t px-5 py-10 text-center md:px-10">
-        <p className="font-display text-3xl">Seja Forte</p>
-        <a
-          href={OFFER.instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-block text-sm text-muted-foreground transition-colors hover:text-primary"
-        >
-          {OFFER.creator}
-        </a>
+        <p className="font-display text-3xl">Landing Page Teste</p>
+        <span className="mt-2 inline-block text-sm text-muted-foreground">{OFFER.creator}</span>
       </footer>
-
-      {/* Botão fixo no celular */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t bg-background/90 p-3 backdrop-blur md:hidden">
-        <a
-          href={OFFER.checkoutUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-red-gradient font-display flex h-14 items-center justify-between rounded-md px-5 text-lg text-primary-foreground shadow-glow"
-        >
-          <span>Entrar no Seja Forte</span>
-          <span>R$ {OFFER.price}</span>
-        </a>
-      </div>
     </main>
   );
 }

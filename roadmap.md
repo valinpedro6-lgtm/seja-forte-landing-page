@@ -1,3 +1,3 @@
 # Roadmap
-- [x] Landing page SEJA FORTE com as 4 fotos e checkout Lastlink
-- [x] Trocar o tema vermelho por roxo
+- [x] Landing page neutra para personalização
+- [x] Placeholder @000000 sem foto e sem preço
