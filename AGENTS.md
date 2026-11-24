@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Offer data (price, checkout URL, creator handle) lives only in `src/lib/offer.ts`; every CTA reads from it so a price or link change is one edit.
