@@ -170,7 +170,7 @@ function Index() {
             src={foto2.url}
             alt="@ogabmts de perfil mostrando o ombro e o braço"
             loading="lazy"
-            className="aspect-[4/5] w-full rounded-lg object-cover"
+            className="-mx-5 aspect-[4/5] w-[calc(100%+2.5rem)] max-w-none object-cover md:mx-0 md:w-full md:rounded-lg"
           />
           <div className="absolute -bottom-5 -left-3 rounded-md bg-primary px-4 py-2 font-display text-2xl text-primary-foreground shadow-glow md:-left-6">
             Sem segredo
@@ -203,31 +203,35 @@ function Index() {
       </section>
 
       {/* Fotos */}
-      <section className="mx-auto grid max-w-6xl grid-cols-2 gap-3 px-5 py-20 md:gap-5 md:px-10 md:py-28">
-        <div className="relative">
-          <img
-            src={foto4.url}
-            alt="@ogabmts mostrando as pernas na academia"
-            loading="lazy"
-            className="aspect-[3/4] w-full rounded-lg object-cover"
-          />
-          <span className="font-display absolute bottom-3 left-3 text-2xl md:text-4xl">Constância</span>
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-5 md:px-10">
+          <p className="text-sm font-semibold tracking-widest text-primary uppercase">Resultado de verdade</p>
+          <h2 className="font-display mt-3 text-5xl md:text-7xl">Feito no treino</h2>
         </div>
-        <div className="relative mt-10 md:mt-20">
-          <img
-            src={foto3.url}
-            alt="@ogabmts sentado em um aparelho da academia"
-            loading="lazy"
-            className="aspect-[3/4] w-full rounded-lg object-cover"
-          />
-          <span className="font-display absolute bottom-3 left-3 text-2xl text-primary md:text-4xl">
-            Disciplina
-          </span>
+        <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-auto md:grid md:max-w-6xl md:grid-cols-4 md:px-10">
+          {[
+            { src: foto1.url, label: "Braço", pos: "object-[50%_30%]" },
+            { src: foto4.url, label: "Pernas", pos: "object-center" },
+            { src: foto2.url, label: "Ombro", pos: "object-center" },
+            { src: foto3.url, label: "Disciplina", pos: "object-[50%_60%]" },
+          ].map((f, i) => (
+            <figure key={f.label} className="group relative h-[70svh] w-[78vw] shrink-0 snap-center overflow-hidden rounded-xl md:h-[520px] md:w-auto">
+              <img src={f.src} alt={`@ogabmts — ${f.label}`} loading="lazy" className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${f.pos}`} />
+              <div className="bg-fade absolute inset-0" />
+              <figcaption className="absolute bottom-4 left-4 flex items-baseline gap-3">
+                <span className="font-display text-lg text-primary">0{i + 1}</span>
+                <span className="font-display text-4xl">{f.label}</span>
+              </figcaption>
+            </figure>
+          ))}
         </div>
+        <p className="mt-3 px-5 text-xs text-muted-foreground md:hidden">Arraste para o lado →</p>
       </section>
 
       {/* Preço */}
-      <section id="entrar" className="px-5 pb-20 md:px-10 md:pb-28">
+      <section id="entrar" className="relative overflow-hidden px-5 py-20 md:px-10 md:py-28">
+        <img src={foto4.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-30" />
+        <div className="absolute inset-0 bg-background/70" />
         <div className="grain relative mx-auto max-w-xl overflow-hidden rounded-xl border border-primary/40 bg-card p-8 text-center shadow-glow md:p-12">
           <p className="text-sm font-semibold tracking-widest text-primary uppercase">Acesso completo</p>
           <h2 className="font-display mt-3 text-6xl md:text-7xl">Seja Forte</h2>
