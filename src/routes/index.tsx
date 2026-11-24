@@ -43,7 +43,7 @@ const MARQUEE = ["Clareza", "Conexão", "Resultado", "Estratégia", "Ação", "S
 function ActionButton({ label = "Quero começar" }: { label?: string }) {
   return (
     <Button asChild variant="hero" size="xl" className="w-full sm:w-auto">
-      <a href={OFFER.checkoutUrl}>
+      <a href="#contato">
         {label}
         <ArrowRight className="size-5!" />
       </a>
